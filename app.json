@@ -5,29 +5,63 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "scheme": "aynihogar",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F28627"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aynihogar.aynihogar"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#F28627"
+      },
+      "package": "com.aynihogar.aynihogar"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
-    ]
+      "expo-router",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.608773871662-t1g623fmtmhi0lhrbb482uvfffd9crbm"
+        }
+      ],
+      "expo-asset",
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Inter-Black.otf",
+            "./assets/fonts/Inter-Bold.otf",
+            "./assets/fonts/Inter-ExtraBold.otf",
+            "./assets/fonts/Inter-ExtraLight.otf",
+            "./assets/fonts/Inter-Light.otf",
+            "./assets/fonts/Inter-Medium.otf",
+            "./assets/fonts/Inter-Regular.otf",
+            "./assets/fonts/Inter-SemiBold.otf",
+            "./assets/fonts/Inter-Thin.otf"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c6cea1a8-07e4-4884-9e3e-24152c16fee6"
+      }
+    }
   }
 }
