@@ -17,9 +17,9 @@ export default function Index() {
   if (!session) {
     return <Redirect href={'/sign-in'} />;
   }
-  
+
   if(session && !profile){
-    return <Redirect href={'/(users)/profile'} />;
+      return <Redirect href={'/(users)/profile'} />;
   }
 
   return <Redirect href={'/(users)'} />

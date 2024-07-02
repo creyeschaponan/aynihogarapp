@@ -84,6 +84,7 @@ export default function LoginScreen() {
       console.log(error)
       Alert.alert(error.message)
     }
+    router.push('/(auth)/verification')
   }
 
   const handlePressTerms = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-const CustomText = ({ style, children, ...props }) => {
+const CustomText = (props: any) => {
   return (
-    <Text style={[styles.text, style]} {...props}>
-      {children}
+    <Text {...props}>
+      {props.children}
     </Text>
   );
 };

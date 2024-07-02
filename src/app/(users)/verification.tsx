@@ -7,7 +7,7 @@ import { supabase } from '../../lib/supabase';
 import Loading from '../../components/auth/Loading';
 import { useAuth } from '../../providers/AuthProvider';
 
-const CELL_SIZE = 45;
+const CELL_SIZE = 30;
 const CELL_BORDER_RADIUS = 0;
 const DEFAULT_CELL_BG_COLOR = Color.primary;
 const NOT_EMPTY_CELL_BG_COLOR = Color.primary;
@@ -109,12 +109,11 @@ export default function CodeVerification () {
 
   return (
     isLoadingPin ? <Loading /> : (
-    <SafeAreaView style={styles.container}>
-      <View >
-        <Text style={[theme.title,styles.title]}>
+    <SafeAreaView className='flex-1 justify-center bg-backgroundLight px-6 m-0 '>
+        <Text className="text-primary text-center text-2xl font-bold mb-5">
           Te enviaremos un {'\n'} código
         </Text>
-        <Text style={[theme.text,styles.text]}>
+        <Text className='text-terciary text-center text-xs'>
           Por SMS recibirás un código el cual tendrás que {'\n'}
           ingresar a continuación:
         </Text>
@@ -130,29 +129,11 @@ export default function CodeVerification () {
           textContentType="oneTimeCode"
           renderCell={renderCell}
         />
-      </View>
     </SafeAreaView>)
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 50,
-    gap: 10,
-  },
-  title:{
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-  text: {
-    marginTop: 5,
-    textAlign: "center",
-  },
-
-
   codeFiledRoot: {
     height: CELL_SIZE,
     marginTop: 30,
@@ -163,8 +144,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     height: CELL_SIZE,
     width: CELL_SIZE,
-    lineHeight: CELL_SIZE - 5,
-    fontSize: 30,
+    lineHeight: CELL_SIZE - 3,
+    fontSize: 20,
     textAlign: 'center',
     borderRadius: CELL_BORDER_RADIUS,
     color: Color.primary,

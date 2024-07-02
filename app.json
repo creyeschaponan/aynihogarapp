@@ -53,6 +53,26 @@
             "./assets/fonts/Inter-Thin.otf"
           ]
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos"
+        }
+      ],
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiYXluaWhvZ2FyIiwiYSI6ImNseTN3MGhhMjBjd24ya3BvbGJycGY2MjUifQ.DswzFGGeMcyM0tGykb6VUA",
+          "RNMapboxMapsVersion": "11.0.0"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Show current location on map.",
+          "isAndroidBackgroundLocationEnabled": true
+        }
       ]
     ],
     "extra": {

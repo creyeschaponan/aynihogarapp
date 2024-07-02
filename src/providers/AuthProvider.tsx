@@ -12,16 +12,22 @@ type AuthData = {
   session: Session | null;
   profile: any;
   loading: boolean;
+  isTechnical: boolean;
   phone: string | '';
   setPhone: (phone: string) => void;
+  isProfile: boolean;
+  setIsProfile: (isProfile: boolean) => void;
 };
 
 const AuthContext = createContext<AuthData>({
   session: null,
   loading: true,
   profile: null,
+  isTechnical: false,
   phone: '',
   setPhone: () => {},
+  isProfile: false,
+  setIsProfile: () => {},
 });
 
 export default function AuthProvider({ children }: PropsWithChildren) {
@@ -29,6 +35,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [phone, setPhone] = useState('');
+  const [isProfile, setIsProfile] = useState(false);
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -46,6 +53,12 @@ export default function AuthProvider({ children }: PropsWithChildren) {
           .eq('id', session.user.id)
           .single();
         setProfile(data || null);
+
+        if(data){
+          setIsProfile(true);
+        }else{
+          setIsProfile(false);
+        }
       }
 
       setLoading(false);
@@ -59,7 +72,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
 
   return (
     <AuthContext.Provider
-      value={{ session, loading, profile, phone, setPhone }}
+      value={{ session, loading, profile, isTechnical: profile?.group === 'technical', phone, setPhone, isProfile, setIsProfile }}
     >
       {children}
     </AuthContext.Provider>

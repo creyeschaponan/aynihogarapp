@@ -4,9 +4,9 @@ import theme from '../constants/theme';
 export default function PrimaryButton(props: any) {
   const classNames = [];
   if (props.validated) {
-    classNames.push("bg-primary py-5 text-center px-24 min-w-full");
+    classNames.push("bg-primary py-5 text-center ");
   } else {
-    classNames.push("bg-primaryDisabled py-5 text-center px-24 min-w-full");
+    classNames.push("bg-primaryDisabled py-5 text-center ");
   }
   return (
       <Pressable className={classNames.join(" ")}
