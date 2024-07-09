@@ -21,7 +21,7 @@ const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentR
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
+    // console.log('handleSheetChanges', index);
     if (onChange) {
       onChange(index);
     }
@@ -43,6 +43,8 @@ const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentR
       ref={bottomSheetRef}
       onChange={handleSheetChanges}
       index={1}
+      handleIndicatorStyle={styles.handleIndicator}
+      handleStyle={styles.handleStyle}
     >
       <View style={styles.contentContainer}>
         {children}
@@ -56,6 +58,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  handleStyle:{
+    backgroundColor: '#F28627',
+  },
+  handleIndicator:{
+    backgroundColor: '#ffffff',
+    
+  }
 });
 
 export default forwardRef(BottomSheetComponent);

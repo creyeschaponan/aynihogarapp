@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
-
-import * as Location from 'expo-location';
+import { StyleSheet } from 'react-native';
+import { getCurrentLocation } from '../hooks/useLocation';
 
 export default function Ubication() {
   const [location, setLocation] = useState(null);
@@ -10,14 +9,12 @@ export default function Ubication() {
   useEffect(() => {
     (async () => {
       
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
+      try {
+        const locationData = await getCurrentLocation();
+        setLocation(locationData);
+      } catch (error) {
+        setErrorMsg(error.message);
       }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
     })();
   }, []);
 
@@ -32,6 +29,8 @@ export default function Ubication() {
     <></>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

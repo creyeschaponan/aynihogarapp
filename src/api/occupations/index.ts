@@ -7,7 +7,7 @@ export const useOccupations = () => {
       queryFn: async () => {
         const { data, error } = await supabase.from('occupations')
         .select('id,name,image,is_active')
-        // .eq('is_active',1)
+        .eq('is_active',1)
         .eq('deleted_at', null)
         .order('created_at', { ascending: true });
         if (error) {

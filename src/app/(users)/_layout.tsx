@@ -10,14 +10,13 @@ const UsersLayout = () => {
             drawerLabelStyle: {
                 marginLeft: -20
             },
-            // drawerActiveBackgroundColor: '#F28627',
             drawerActiveTintColor: '#F28627',
             drawerInactiveTintColor: '#888888',
             headerTintColor: '#F28627',
             drawerIcon: ({size, color})=>(
                 <Ionicons name="menu-outline"  size={size} color={color} />
             ),
-            // headerShown: false,
+            headerShown: false,
             
         }}
         drawerContent={DrawerContent}

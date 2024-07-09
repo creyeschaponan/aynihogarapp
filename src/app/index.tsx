@@ -15,7 +15,7 @@ export default function Index() {
     );
   }
   if (!session) {
-    return <Redirect href={'/sign-in'} />;
+    return <Redirect href={'/(auth)/sign-in'} />;
   }
 
   if(session && !profile){
