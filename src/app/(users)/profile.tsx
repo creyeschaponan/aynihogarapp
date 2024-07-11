@@ -90,7 +90,7 @@ const Profile = (props: any) => {
       // if(isUpdate && !isProviderPhone){
       //   router.push('/(users)/verification');
       // }else{
-        router.push('/(users)/index');
+        router.push('/(users)');
       //}
     } catch (error) {
       if (error instanceof Error) {

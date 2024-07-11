@@ -45,6 +45,7 @@ const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentR
       index={1}
       handleIndicatorStyle={styles.handleIndicator}
       handleStyle={styles.handleStyle}
+      keyboardBehavior="extend"
     >
       <View style={styles.contentContainer}>
         {children}
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   },
   handleIndicator:{
     backgroundColor: '#ffffff',
-    
+    width: 100,
   }
 });
 
