@@ -1,6 +1,12 @@
-import React, { useCallback, useRef, ReactNode, useImperativeHandle, forwardRef } from 'react';
-import { View, StyleSheet } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
+import React, {
+  useCallback,
+  useRef,
+  ReactNode,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
+import { View, StyleSheet } from "react-native";
+import BottomSheet from "@gorhom/bottom-sheet";
 
 interface BottomSheetComponentProps {
   snapPoints?: Array<string | number>;
@@ -13,19 +19,21 @@ export interface BottomSheetComponentRef {
   expandSheet: () => void;
 }
 
-const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentRef, BottomSheetComponentProps> = ({
-  snapPoints = ["10%", "40%"],
-  onChange,
-  children,
-}, ref) => {
+const BottomSheetComponent: React.ForwardRefRenderFunction<
+  BottomSheetComponentRef,
+  BottomSheetComponentProps
+> = ({ snapPoints = ["10%", "40%"], onChange, children }, ref) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const handleSheetChanges = useCallback((index: number) => {
-    // console.log('handleSheetChanges', index);
-    if (onChange) {
-      onChange(index);
-    }
-  }, [onChange]);
+  const handleSheetChanges = useCallback(
+    (index: number) => {
+      // console.log('handleSheetChanges', index);
+      if (onChange) {
+        onChange(index);
+      }
+    },
+    [onChange]
+  );
 
   // Exponer método público para manejar el colapso
   useImperativeHandle(ref, () => ({
@@ -34,7 +42,7 @@ const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentR
     },
     expandSheet: () => {
       bottomSheetRef.current?.expand();
-    }
+    },
   }));
 
   return (
@@ -47,9 +55,7 @@ const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentR
       handleStyle={styles.handleStyle}
       keyboardBehavior="extend"
     >
-      <View style={styles.contentContainer}>
-        {children}
-      </View>
+      <View style={styles.contentContainer}>{children}</View>
     </BottomSheet>
   );
 };
@@ -57,15 +63,15 @@ const BottomSheetComponent: React.ForwardRefRenderFunction<BottomSheetComponentR
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  handleStyle:{
-    backgroundColor: '#F28627',
+  handleStyle: {
+    backgroundColor: "#F28627",
   },
-  handleIndicator:{
-    backgroundColor: '#ffffff',
+  handleIndicator: {
+    backgroundColor: "#ffffff",
     width: 100,
-  }
+  },
 });
 
 export default forwardRef(BottomSheetComponent);

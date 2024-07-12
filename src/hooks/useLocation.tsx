@@ -1,9 +1,9 @@
-import * as Location from 'expo-location';
+import * as Location from "expo-location";
 
 async function getCurrentLocation() {
   let { status } = await Location.requestForegroundPermissionsAsync();
-  if (status !== 'granted') {
-    throw new Error('Permission to access location was denied');
+  if (status !== "granted") {
+    throw new Error("Permission to access location was denied");
   }
 
   const location = await Location.getCurrentPositionAsync({});
@@ -12,12 +12,11 @@ async function getCurrentLocation() {
 
 async function getGeolocation(options: any) {
   let { status } = await Location.requestForegroundPermissionsAsync();
-  if (status !== 'granted') {
-    throw new Error('Permission to access location was denied');
+  if (status !== "granted") {
+    throw new Error("Permission to access location was denied");
   }
   const location = await Location.reverseGeocodeAsync(options.coords);
   return location;
 }
 
 export { getCurrentLocation, getGeolocation };
-

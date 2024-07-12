@@ -7,6 +7,7 @@ module.exports = {
       primary: '#F28627',
       secondary: '#FFFFFF',
       terciary: '#888888',
+      cuarto: "#d9d9d9",
       accent: '#f26513',
       success: '#2D882D',
       warning: '#F2C94C',
@@ -18,6 +19,7 @@ module.exports = {
       textLight: '#212529',
       textDark: '#E1E1E1',
       primaryDisabled: '#D3A286',
+
     },
     extend: {
       fontFamily: {

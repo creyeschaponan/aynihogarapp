@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import { Alert,StyleSheet, Text, View, Linking,ScrollView,TouchableOpacity,Keyboard } from "react-native"
+import { Alert, Text, View, Linking,ScrollView,TouchableOpacity,Keyboard } from "react-native"
 import { router } from "expo-router";
 
 import { FontAwesome as FAIcon } from '@expo/vector-icons';
@@ -13,7 +13,6 @@ import PrimaryButton from "../../components/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton";
 
 import { useAuth } from "../../providers/AuthProvider";
-import { Int32 } from "react-native/Libraries/Types/CodegenTypes";
 
 const data = {
   "lists": [
@@ -67,7 +66,7 @@ export default function LoginScreen() {
     refScrollable.current.open()
   }
 
-  const sendOtp = async (id : Number) =>{
+  const sendOtp = async (id : number) =>{
     refScrollable.current.close()
     setLoading(true);
     const phoneTotal = selectedCountry?.callingCode + "" + localPhone.replace(/ /g, "")
@@ -76,7 +75,7 @@ export default function LoginScreen() {
     const {error} = await supabase.auth.signInWithOtp({
         phone: phoneTotal,
         options: {
-            channel: id == 1 ? "sms" : "whatsapp"
+            channel: id === 1 ? "sms" : "whatsapp"
         }
     })
     setLoading(false); 
