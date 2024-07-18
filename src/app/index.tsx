@@ -20,9 +20,9 @@ export default function Index() {
     return <Redirect href={"/(auth)/sign-in"} />;
   }
 
-  if (session && !profile) {
-    return <Redirect href={"/(users)/profile"} />;
-  }
+  // if (session && !profile) {
+  //   return <Redirect href={"/(users)/profile"} />;
+  // }
 
   return <Redirect href={"/(users)"} />;
 }

@@ -3,7 +3,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Text from "../Text";
 
 type occupationData = {
-  id: string;
+  id: number;
   name: string;
   image: string;
 };

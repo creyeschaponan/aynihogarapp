@@ -1,19 +1,19 @@
-import { supabase } from '../lib/supabase';
-import { Session } from '@supabase/supabase-js';
+import { supabase } from "../lib/supabase";
+import { Session } from "@supabase/supabase-js";
 import {
   PropsWithChildren,
   createContext,
   useContext,
   useEffect,
   useState,
-} from 'react';
+} from "react";
 
 type AuthData = {
   session: Session | null;
   profile: any;
   loading: boolean;
   isTechnical: boolean;
-  phone: string | '';
+  phone: string | "";
   setPhone: (phone: string) => void;
   isProfile: boolean;
   setIsProfile: (isProfile: boolean) => void;
@@ -24,7 +24,7 @@ const AuthContext = createContext<AuthData>({
   loading: true,
   profile: null,
   isTechnical: false,
-  phone: '',
+  phone: "",
   setPhone: () => {},
   isProfile: false,
   setIsProfile: () => {},
@@ -34,7 +34,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState("");
   const [isProfile, setIsProfile] = useState(false);
 
   useEffect(() => {
@@ -48,15 +48,15 @@ export default function AuthProvider({ children }: PropsWithChildren) {
       if (session) {
         // fetch profile
         const { data } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', session.user.id)
+          .from("profiles")
+          .select("*")
+          .eq("id", session.user.id)
           .single();
         setProfile(data || null);
 
-        if(data){
+        if (data) {
           setIsProfile(true);
-        }else{
+        } else {
           setIsProfile(false);
         }
       }
@@ -72,7 +72,16 @@ export default function AuthProvider({ children }: PropsWithChildren) {
 
   return (
     <AuthContext.Provider
-      value={{ session, loading, profile, isTechnical: profile?.group === 'technical', phone, setPhone, isProfile, setIsProfile }}
+      value={{
+        session,
+        loading,
+        profile,
+        isTechnical: profile?.group === "technical",
+        phone,
+        setPhone,
+        isProfile,
+        setIsProfile,
+      }}
     >
       {children}
     </AuthContext.Provider>
